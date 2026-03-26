@@ -42,7 +42,7 @@ This file serves as a persistent memory of the architectural choices, constraint
 - **Redis**: Stable, ClusterIP.
 - **Kafka Suite**: 
   - `kafka`: Stable (StatefulSet).
-  - `kafka-ui`: Running, configured with Schema Registry and REST Proxy URLs.
+  - `kafka-ui`: Stable (Verified HTTPS access).
   - `kafka-rest`: Stable (Verified Avro production/consumption).
   - `schema-registry`: Stable (Verified schema registration & Avro flow).
 - **IT-Tools**: Stable, ClusterIP.
