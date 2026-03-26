@@ -5,7 +5,7 @@ This chart deploys Apache Kafka 7.8.0 in KRaft mode (without ZooKeeper) to the c
 ## Configuration
 
 - **Namespace**: kafka
-- **Image**: confluentinc/cp-kafka:7.8.0
+- **Image**: confluentinc/cp-kafka:7.9.6
 - **Storage**: 512Mi persistent volume at `/Users/cesarl/k8s/vol1/kafka`
 - **Resources**: 1Gi-2Gi memory, 500m-1000m CPU
 - **Storage Class**: local-path
@@ -24,9 +24,11 @@ This chart deploys Apache Kafka 7.8.0 in KRaft mode (without ZooKeeper) to the c
 - **REST Proxy**: http://kafka-rest.kafka.svc.cluster.local:80
 - **Schema Registry**: http://schema-registry.kafka.svc.cluster.local:8081
 
-### External
-- **Kafka UI**: http://kafka-ui.k3s.local (via Traefik)
-- **External Bootstrap**: Use the LoadBalancer IP for `kafka-external`
+### Mac/Host Access (via OrbStack)
+- **Kafka Bootstrap**: kafka.kafka.svc.cluster.local:9092
+- **Kafka UI**: http://kafka-ui.kafka.svc.cluster.local
+- **REST Proxy**: http://kafka-rest.kafka.svc.cluster.local
+- **Schema Registry**: http://schema-registry.kafka.svc.cluster.local:8081
 
 ## Quick Tests
 

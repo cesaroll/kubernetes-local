@@ -18,14 +18,12 @@ spec:
         fsGroup: 1000
       containers:
       - name: kafka
-        image: confluentinc/cp-kafka:7.8.0
+        image: confluentinc/cp-kafka:7.9.6
         ports:
         - containerPort: 9092
           name: plaintext
         - containerPort: 9093
           name: controller
-        - containerPort: 9094
-          name: external
         env:
         - name: KAFKA_HEAP_OPTS
           value: "-Xmx1G -Xms1G"

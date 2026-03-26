@@ -56,19 +56,3 @@ spec:
     targetPort: 8080
   selector:
     app: kafka-ui
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: kafka-ui-external
-  namespace: kafka
-  labels:
-    app: kafka-ui
-spec:
-  type: LoadBalancer
-  ports:
-  - port: 80
-    name: http
-    targetPort: 8080
-  selector:
-    app: kafka-ui

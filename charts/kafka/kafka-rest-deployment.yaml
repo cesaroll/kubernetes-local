@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: kafka-rest
-        image: confluentinc/cp-kafka-rest:7.8.0
+        image: confluentinc/cp-kafka-rest:7.9.6
         command: ["/bin/bash"]
         args:
           - "-c"
@@ -71,22 +71,6 @@ metadata:
   labels:
     app: kafka-rest
 spec:
-  ports:
-  - port: 80
-    name: http
-    targetPort: 8082
-  selector:
-    app: kafka-rest
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: kafka-rest-external
-  namespace: kafka
-  labels:
-    app: kafka-rest
-spec:
-  type: LoadBalancer
   ports:
   - port: 80
     name: http

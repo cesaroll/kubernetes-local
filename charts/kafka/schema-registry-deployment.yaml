@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: schema-registry
-        image: confluentinc/cp-schema-registry:7.8.0
+        image: confluentinc/cp-schema-registry:7.9.6
         command: ["/bin/bash"]
         args:
           - "-c"
@@ -42,16 +42,16 @@ spec:
           httpGet:
             path: /subjects
             port: 8081
-          initialDelaySeconds: 15
-          periodSeconds: 5
-          timeoutSeconds: 3
+          initialDelaySeconds: 60
+          periodSeconds: 10
+          timeoutSeconds: 5
         livenessProbe:
           httpGet:
             path: /subjects
             port: 8081
-          initialDelaySeconds: 30
-          periodSeconds: 10
-          timeoutSeconds: 3
+          initialDelaySeconds: 90
+          periodSeconds: 15
+          timeoutSeconds: 5
         volumeMounts:
         - name: config
           mountPath: /etc/schema-registry/custom-config
@@ -77,22 +77,6 @@ metadata:
 spec:
   ports:
   - port: 8081
-    name: http
-    targetPort: 8081
-  selector:
-    app: schema-registry
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: schema-registry-external
-  namespace: kafka
-  labels:
-    app: schema-registry
-spec:
-  type: LoadBalancer
-  ports:
-  - port: 80
     name: http
     targetPort: 8081
   selector:
