@@ -14,7 +14,8 @@ This file serves as a persistent memory of the architectural choices, constraint
 ### 1. Networking & Service Discovery
 - **ClusterIP Pattern**: All services (`postgresql`, `redis`, `kafka`, `kafka-ui`, `kafka-rest`, `schema-registry`) use `ClusterIP`.
 - **OrbStack Integration**: Leveraging OrbStack's ability to resolve `.svc.cluster.local` domains directly from the Mac host. 
-- **Removal of LoadBalancers/Ingress**: Eliminated `LoadBalancer` services and Traefik `IngressRoutes` to simplify the setup and use a single source of truth for service URLs (e.g., `kafka.kafka.svc.cluster.local:9092`).
+- **Ingress & SSL**: Installed **NGINX Ingress Controller** to handle HTTPS via OrbStack's automatic certificate management for `*.k8s.orb.local` domains. 
+- **Removal of LoadBalancers**: Eliminated standalone `LoadBalancer` services to simplify the setup.
 
 ### 2. Storage Strategy
 - **Local Path Provisioning**: Uses the `local-path` storage class.
@@ -44,6 +45,7 @@ This file serves as a persistent memory of the architectural choices, constraint
   - `kafka-ui`: Running, configured with Schema Registry and REST Proxy URLs.
   - `kafka-rest`: Stable (Verified Avro production/consumption).
   - `schema-registry`: Stable (Verified schema registration & Avro flow).
+- **IT-Tools**: Stable, ClusterIP.
 - **Git**: Repository `cesaroll/kubernetes-local` created and updated with stable Kafka suite configuration.
 
 ---
