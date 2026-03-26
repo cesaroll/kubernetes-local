@@ -1,4 +1,4 @@
-- Tools:
+- Apps:
     - IT Tools:
         icon: it-tools
         href: https://it-tools.k8s.orb.local
@@ -8,6 +8,11 @@
         icon: si-tmux
         href: https://tmuxcheatsheet.com/
         description: tmux cheat sheet
+    - Kibana:
+        icon: elastic-kibana
+        href: https://kibana.k8s.orb.local
+        description: ELK Visualization
+        siteMonitor: https://kibana.k8s.orb.local
 
 - Storage:
     - PostgreSQL:
@@ -26,6 +31,11 @@
         widget:
           type: redis
           url: redis.redis.svc.cluster.local:6379
+    - Elasticsearch:
+        icon: elasticsearch
+        href: http://elasticsearch.elk.svc.cluster.local:9200
+        description: Search Engine
+        siteMonitor: http://elasticsearch.elk.svc.cluster.local:9200
 
 - Infrastructure:
     - Kafka UI:
@@ -47,7 +57,7 @@
         icon: si-apachekafka #-#231F20
         href: kafka.kafka.svc.cluster.local:9092
         description: Message Broker
-        # ping: kafka.kafka.svc.cluster.local:9092
+        siteMonitor: tcp://kafka.kafka.svc.cluster.local:9092
 
 - Network:
   - UniFi Network:

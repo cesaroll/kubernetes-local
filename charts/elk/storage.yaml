@@ -1,0 +1,35 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: elk-pv
+spec:
+  capacity:
+    storage: 2Gi
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: local-path
+  local:
+    path: /Users/cesarl/k8s/vol1/elk
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values:
+          - orbstack
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: elk-pvc
+  namespace: elk
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: local-path
+  volumeName: elk-pv
+  resources:
+    requests:
+      storage: 2Gi

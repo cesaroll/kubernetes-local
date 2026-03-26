@@ -44,6 +44,7 @@ This file serves as a persistent memory of the architectural choices, constraint
 - **Homepage**: Stable and highly customized. Accessible at `https://homepage.k8s.orb.local`.
   - Categories: Tools, Storage, Infrastructure, Network.
   - Includes Kubernetes cluster/node widgets and individual service health monitors.
+- **ELK Stack**: Stable (Elasticsearch + Kibana). Accessible at `https://kibana.k8s.orb.local`.
 - **Metrics Server**: Stable (Insecure TLS enabled for OrbStack).
 
 ---
