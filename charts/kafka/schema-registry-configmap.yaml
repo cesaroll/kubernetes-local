@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: schema-registry-config
+  namespace: kafka
+data:
+  schema-registry.properties: |
+    # Kafka connection
+    kafkastore.bootstrap.servers=kafka.kafka.svc.cluster.local:9092
+
+    # Schema Registry settings
+    listeners=http://0.0.0.0:8081
+    host.name=schema-registry
+
+    # Topic for storing schemas
+    kafkastore.topic=_schemas
+    kafkastore.topic.replication.factor=1
+
+    # Leader eligibility
+    leader.eligibility=true
+
+    # Compatibility settings
+    schema.compatibility.level=backward

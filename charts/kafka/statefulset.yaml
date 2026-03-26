@@ -1,0 +1,70 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: kafka
+  namespace: kafka
+spec:
+  serviceName: kafka-headless
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kafka
+  template:
+    metadata:
+      labels:
+        app: kafka
+    spec:
+      securityContext:
+        fsGroup: 1000
+      containers:
+      - name: kafka
+        image: confluentinc/cp-kafka:7.8.0
+        ports:
+        - containerPort: 9092
+          name: plaintext
+        - containerPort: 9093
+          name: controller
+        - containerPort: 9094
+          name: external
+        env:
+        - name: KAFKA_HEAP_OPTS
+          value: "-Xmx1G -Xms1G"
+        - name: KAFKA_OPTS
+          value: "-Dlog4j.configuration=file:/etc/kafka/log4j.properties"
+        - name: KAFKA_JVM_PERFORMANCE_OPTS
+          value: "-XX:+UseG1GC -XX:MaxGCPauseMillis=20 -XX:InitiatingHeapOccupancyPercent=35 -XX:+ExplicitGCInvokesConcurrent -Djava.awt.headless=true"
+        - name: CLUSTER_ID
+          value: "LX8xwgxxQD-j0gEuRoNdog"
+        command:
+        - /bin/bash
+        - -c
+        args:
+        - |
+          # Initialize KRaft mode
+          echo "Initializing Kafka in KRaft mode"
+          if [ ! -f "/var/lib/kafka/data/meta.properties" ]; then
+            mkdir -p /var/lib/kafka/data
+            kafka-storage format -t $CLUSTER_ID -c /etc/kafka/server.properties
+          fi
+          # Start Kafka with the specified configuration
+          exec kafka-server-start /etc/kafka/server.properties
+        volumeMounts:
+        - name: kafka-data
+          mountPath: /var/lib/kafka/data
+        - name: config-volume
+          mountPath: /etc/kafka/server.properties
+          subPath: server.properties
+        resources:
+          requests:
+            memory: "1Gi"
+            cpu: "500m"
+          limits:
+            memory: "2Gi"
+            cpu: "1000m"
+      volumes:
+      - name: config-volume
+        configMap:
+          name: kafka-config
+      - name: kafka-data
+        persistentVolumeClaim:
+          claimName: kafka-pvc

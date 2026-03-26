@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: kafka-rest-config
+  namespace: kafka
+data:
+  kafka-rest.properties: |
+    # Kafka broker connection
+    bootstrap.servers=kafka.kafka.svc.cluster.local:9092
+
+    # REST Proxy settings
+    host.name=kafka-rest
+    listeners=http://0.0.0.0:8082
+
+    # Schema Registry
+    schema.registry.url=http://schema-registry.kafka.svc.cluster.local:8081
+
+    # Consumer settings
+    consumer.request.timeout.ms=30000
+
+    # Producer settings
+    producer.acks=all

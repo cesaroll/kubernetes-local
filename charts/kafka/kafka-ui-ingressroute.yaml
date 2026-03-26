@@ -1,0 +1,14 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: kafka-ui-ingressroute
+  namespace: kafka
+spec:
+  entryPoints:
+    - web
+  routes:
+  - match: Host(`kafka-ui.k3s.local`)
+    kind: Rule
+    services:
+    - name: kafka-ui
+      port: 80

@@ -1,0 +1,14 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: kafka-rest-ingressroute
+  namespace: kafka
+spec:
+  entryPoints:
+    - web
+  routes:
+  - match: Host(`kafka-rest.k3s.local`)
+    kind: Rule
+    services:
+    - name: kafka-rest
+      port: 80

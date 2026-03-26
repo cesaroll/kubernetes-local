@@ -1,0 +1,95 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kafka-rest
+  namespace: kafka
+  labels:
+    app: kafka-rest
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kafka-rest
+  template:
+    metadata:
+      labels:
+        app: kafka-rest
+    spec:
+      containers:
+      - name: kafka-rest
+        image: confluentinc/cp-kafka-rest:7.8.0
+        command: ["/bin/bash"]
+        args:
+          - "-c"
+          - |
+            kafka-rest-start /etc/kafka-rest/custom-config/kafka-rest.properties &
+            sleep infinity
+        ports:
+        - containerPort: 8082
+          name: http
+        env:
+        - name: KAFKA_REST_HOST_NAME
+          value: "kafka-rest"
+        - name: KAFKA_REST_BOOTSTRAP_SERVERS
+          value: "kafka.kafka.svc.cluster.local:9092"
+        - name: KAFKA_REST_LISTENERS
+          value: "http://0.0.0.0:8082"
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 8082
+          initialDelaySeconds: 10
+          periodSeconds: 5
+          timeoutSeconds: 3
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 8082
+          initialDelaySeconds: 20
+          periodSeconds: 10
+          timeoutSeconds: 3
+        volumeMounts:
+        - name: config
+          mountPath: /etc/kafka-rest/custom-config
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "100m"
+          limits:
+            memory: "512Mi"
+            cpu: "200m"
+      volumes:
+      - name: config
+        configMap:
+          name: kafka-rest-config
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: kafka-rest
+  namespace: kafka
+  labels:
+    app: kafka-rest
+spec:
+  ports:
+  - port: 80
+    name: http
+    targetPort: 8082
+  selector:
+    app: kafka-rest
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: kafka-rest-external
+  namespace: kafka
+  labels:
+    app: kafka-rest
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+    name: http
+    targetPort: 8082
+  selector:
+    app: kafka-rest
