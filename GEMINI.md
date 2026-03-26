@@ -40,11 +40,11 @@ This file serves as a persistent memory of the architectural choices, constraint
 - **PostgreSQL**: Stable, English README, ClusterIP.
 - **Redis**: Stable, ClusterIP.
 - **Kafka Suite**: 
-  - `kafka`: Running (StatefulSet).
+  - `kafka`: Stable (StatefulSet).
   - `kafka-ui`: Running, configured with Schema Registry and REST Proxy URLs.
-  - `kafka-rest`: Running.
-  - `schema-registry`: Fixed (Probe timing issue resolved).
-- **Git**: Repository `cesaroll/kubernetes-local` created. Final Kafka/Schema Registry fixes are currently **LOCAL ONLY** (awaiting commit directive).
+  - `kafka-rest`: Stable (Verified Avro production/consumption).
+  - `schema-registry`: Stable (Verified schema registration & Avro flow).
+- **Git**: Repository `cesaroll/kubernetes-local` created and updated with stable Kafka suite configuration.
 
 ---
 *Note: This file is automatically updated as the project evolves.*
