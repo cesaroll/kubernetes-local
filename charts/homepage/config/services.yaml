@@ -8,11 +8,6 @@
         icon: si-tmux
         href: https://tmuxcheatsheet.com/
         description: tmux cheat sheet
-    - Kibana:
-        icon: elastic-kibana
-        href: https://kibana.k8s.orb.local
-        description: ELK Visualization
-        siteMonitor: https://kibana.k8s.orb.local
 
 - Storage:
     - PostgreSQL:
@@ -58,6 +53,33 @@
         href: kafka.kafka.svc.cluster.local:9092
         description: Message Broker
         siteMonitor: tcp://kafka.kafka.svc.cluster.local:9092
+
+- Logs:
+    - Kibana:
+        icon: elastic-kibana
+        href: https://kibana.k8s.orb.local
+        description: ELK Visualization
+        siteMonitor: https://kibana.k8s.orb.local
+    - KibanaDiscover:
+        icon: elastic-kibana
+        href: https://kibana.k8s.orb.local/app/r/s/7m85c
+        description: Discover
+        siteMonitor: https://kibana.k8s.orb.local
+    - KibanaOverview:
+        icon: elastic-kibana
+        href: https://kibana.k8s.orb.local/app/observability/overview?rangeFrom=now-15m&rangeTo=now
+        description: Overview
+        siteMonitor: https://kibana.k8s.orb.local
+    - KibanaLogStream:
+        icon: elastic-kibana
+        href: https://kibana.k8s.orb.local/app/logs/stream?logView=(logViewId:default,type:log-view-reference)&flyoutOptions=(flyoutId:!n,flyoutVisibility:hidden,surroundingLogsId:!n)&logFilter=(filters:!(),query:(language:kuery,query:%27%27),refreshInterval:(pause:!t,value:5000),timeRange:(from:now-15m,to:now))&logPosition=(position:(tiebreaker:257,time:1774548469709))
+        description: Log Stream
+        siteMonitor: https://kibana.k8s.orb.local
+    - KibanaDataViews:
+        icon: elastic-kibana
+        href: https://kibana.k8s.orb.local/app/management/kibana/dataViews
+        description: Data Views
+        siteMonitor: https://kibana.k8s.orb.local
 
 - Network:
   - UniFi Network:
