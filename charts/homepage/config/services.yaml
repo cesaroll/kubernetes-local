@@ -1,4 +1,41 @@
-- My Services:
-    - Homepage:
-        - icon: homepage
-          href: https://homepage.k8s.orb.local
+- Apps:
+    - IT Tools:
+        icon: it-tools
+        href: https://it-tools.k8s.orb.local
+        description: Developer Tools
+
+- Storage:
+    - PostgreSQL:
+        icon: postgresql
+        href: postgresql.postgresql.svc.cluster.local:5432
+        description: Relational Database
+    - Redis:
+        icon: redis
+        href: redis.redis.svc.cluster.local:6379
+        description: Cache
+
+- Infrastructure:
+    - Kafka UI:
+        icon: confluent
+        href: https://kafka-ui.k8s.orb.local
+        description: Kafka Management
+    - Kafka REST:
+        icon: confluent
+        href: kafka-rest.kafka.svc.cluster.local:8082
+        description: Kafka REST Proxy
+    - Schema Registry:
+        icon: confluent
+        href: schema-registry.kafka.svc.cluster.local:8081
+        description: Kafka Schema Management
+    - Kafka:
+        icon: si-apachekafka-#231F20
+        href: kafka.kafka.svc.cluster.local:9092
+        description: Message Broker
+
+- Network:
+  - UniFi Network:
+        icon: unifi
+        href: https://unifi/network/default/dashboard
+  - Ubiquiti Account:
+        icon: unifi
+        href: https://account.ui.com/login?redirect=https%3A%2F%2Funifi.ui.com%2F

@@ -1,7 +1,10 @@
-- Home:
-  - UniFi Network:
-      - icon: unifi
-        href: https://unifi/network/default/dashboard
-  - Ubiquite Account:
-      - icon: unifi
-        href: https://account.ui.com/login?redirect=https%3A%2F%2Funifi.ui.com%2F
+- Bookmarks:
+  - Homepage:
+      - icon: homepage
+        href: https://gethomepage.dev/
+  - Dashboard Icons:
+      - icon: dashboard-icons
+        href: https://dashboardicons.com/icons
+  - Simple Icons:
+      - icon: si-simpleicons
+        href: https://simpleicons.org/
