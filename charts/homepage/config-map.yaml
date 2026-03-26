@@ -1,0 +1,48 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: homepage-config
+  namespace: homepage
+data:
+  kubernetes.yaml: |
+    mode: cluster
+    ingress: true
+  
+  settings.yaml: |
+    title: My Local K8s Dashboard
+    base: http://homepage.k8s.orb.local
+    language: en
+  
+  widgets.yaml: |
+    - kubernetes:
+        cluster:
+          show: true
+          cpu: true
+          memory: true
+        nodes:
+          show: true
+  
+  services.yaml: |
+    - Infrastructure:
+        - PostgreSQL:
+            icon: postgresql
+            href: http://postgresql.postgresql.svc.cluster.local:5432
+            description: Database
+        - Redis:
+            icon: redis
+            href: http://redis.redis.svc.cluster.local:6379
+            description: Cache
+        - Kafka:
+            icon: kafka
+            href: http://kafka.kafka.svc.cluster.local:9092
+            description: Message Broker
+    
+    - Apps:
+        - IT Tools:
+            icon: it-tools
+            href: https://it-tools.k8s.orb.local
+            description: Developer Tools
+        - Kafka UI:
+            icon: kafka
+            href: http://kafka-ui.kafka.svc.cluster.local:80
+            description: Kafka Management

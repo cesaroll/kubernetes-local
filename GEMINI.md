@@ -46,6 +46,7 @@ This file serves as a persistent memory of the architectural choices, constraint
   - `kafka-rest`: Stable (Verified Avro production/consumption).
   - `schema-registry`: Stable (Verified schema registration & Avro flow).
 - **IT-Tools**: Stable, ClusterIP.
+- **Homepage**: Stable, ClusterIP, with Kubernetes integration.
 - **Git**: Repository `cesaroll/kubernetes-local` created and updated with stable Kafka suite configuration.
 
 ---
