@@ -33,7 +33,7 @@ data:
             href: http://redis.redis.svc.cluster.local:6379
             description: Cache
         - Kafka:
-            icon: kafka
+            icon: apache-kafka
             href: http://kafka.kafka.svc.cluster.local:9092
             description: Message Broker
 
@@ -43,6 +43,6 @@ data:
             href: https://it-tools.k8s.orb.local
             description: Developer Tools
         - Kafka UI:
-            icon: kafka
+            icon: apache-kafka-ui
             href: https://kafka-ui.k8s.orb.local
             description: Kafka Management
