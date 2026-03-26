@@ -1,0 +1,10 @@
+# Logs
+*.log
+
+# Temp files
+*.tmp
+.tmp/
+temp/
+
+# Volumes
+vol*/
