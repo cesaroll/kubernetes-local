@@ -47,6 +47,7 @@ This file serves as a persistent memory of the architectural choices, constraint
   - `schema-registry`: Stable (Verified schema registration & Avro flow).
 - **IT-Tools**: Stable, ClusterIP.
 - **Homepage**: Stable, ClusterIP, with Kubernetes integration.
+- **Metrics Server**: Stable (Insecure TLS enabled for OrbStack).
 - **Git**: Repository `cesaroll/kubernetes-local` created and updated with stable Kafka suite configuration.
 
 ---
