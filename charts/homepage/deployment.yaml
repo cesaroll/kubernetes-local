@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: homepage
+  namespace: homepage
+  labels:
+    app: homepage
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: homepage
+  template:
+    metadata:
+      labels:
+        app: homepage
+    spec:
+      serviceAccountName: homepage
+      containers:
+      - name: homepage
+        image: ghcr.io/gethomepage/homepage:latest
+        ports:
+        - containerPort: 3000
+          name: http
+        env:
+        - name: HOMEPAGE_VAR_KUBERNETES_ENABLED
+          value: "true"
+        - name: HOMEPAGE_ALLOWED_HOSTS
+          value: "homepage.k8s.orb.local,homepage.k8s.orb.local:80,homepage.k8s.orb.local:443"
+        volumeMounts:
+        - name: config
+          mountPath: /app/config
+        resources:
+          requests:
+            cpu: "100m"
+            memory: "256Mi"
+          limits:
+            cpu: "500m"
+            memory: "512Mi"
+      volumes:
+      - name: config
+        hostPath:
+          path: /Users/cesarl/k8s/charts/homepage/config
+          type: Directory

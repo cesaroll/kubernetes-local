@@ -1,0 +1,3 @@
+mode: cluster
+showInServiceGrid: true
+# You can add more here if you want to filter namespaces etc.

@@ -1,0 +1,11 @@
+- search:
+    provider: google
+    focus: true
+    target: _blank
+- kubernetes:
+    cluster:
+      show: true
+      cpu: true
+      memory: true
+    nodes:
+      show: true
