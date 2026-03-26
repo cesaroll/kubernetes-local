@@ -13,6 +13,30 @@ data:
         - /var/log/containers/*.log
 
     processors:
+      - decode_json_fields:
+          fields: ["message"]
+          target: ""
+          overwrite_keys: true
+          add_error_key: false
+      - script:
+          lang: javascript
+          id: level_extractor
+          source: >
+            function process(event) {
+              var message = event.Get("message");
+              if (message && !event.Get("log.level")) {
+                var m = message.toUpperCase();
+                if (m.indexOf("ERROR") !== -1 || m.indexOf("SEVERE") !== -1 || m.indexOf("FATAL") !== -1) {
+                  event.Put("log.level", "error");
+                } else if (m.indexOf("WARN") !== -1 || m.indexOf("WARNING") !== -1) {
+                  event.Put("log.level", "warn");
+                } else if (m.indexOf("INFO") !== -1) {
+                  event.Put("log.level", "info");
+                } else if (m.indexOf("DEBUG") !== -1) {
+                  event.Put("log.level", "debug");
+                }
+              }
+            }
       - add_kubernetes_metadata:
           host: ${NODE_NAME}
           matchers:
