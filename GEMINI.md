@@ -46,6 +46,9 @@ This file serves as a persistent memory of the architectural choices, constraint
   - Includes Kubernetes cluster/node widgets and individual service health monitors.
 - ELK Stack: Stable (Elasticsearch + Kibana). Accessible at `https://kibana.k8s.orb.local`. 
   - Filebeat: Fully configured with Kubernetes metadata enrichment and automatic Kibana setup (dashboards/index patterns).
+- **SigNoz**: Stable. Accessible at `https://signoz.k8s.orb.local`.
+  - Installed via Helm in the `platform` namespace.
+  - Using ClickHouse as the telemetry store.
 - Metrics Server: Stable (Insecure TLS enabled for OrbStack).
 
 ---

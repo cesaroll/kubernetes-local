@@ -52,7 +52,7 @@
         icon: si-apachekafka #-#231F20
         href: kafka.kafka.svc.cluster.local:9092
         description: Message Broker
-        siteMonitor: tcp://kafka.kafka.svc.cluster.local:9092
+        # siteMonitor: tcp://kafka.kafka.svc.cluster.local:9092
 
 - Logs:
     - Kibana:
@@ -80,6 +80,13 @@
         href: https://kibana.k8s.orb.local/app/management/kibana/dataViews
         description: Data Views
         siteMonitor: https://kibana.k8s.orb.local
+
+- Infrastructure:
+    - SigNoz:
+        icon: signoz
+        href: https://signoz.k8s.orb.local
+        description: Observability Platform
+        siteMonitor: https://signoz.k8s.orb.local
 
 - Network:
   - UniFi Network:
