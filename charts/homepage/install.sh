@@ -21,6 +21,12 @@ fi
 echo -e "${GREEN}✓ kubectl connected${NC}"
 echo ""
 
+# Create volume directory if it doesn't exist
+echo -e "${YELLOW}Creating volume directory...${NC}"
+mkdir -p /Users/cesarl/k8s/vol1/homepage
+echo -e "${GREEN}✓ Volume directory ready${NC}"
+echo ""
+
 # Apply all manifests
 echo -e "${YELLOW}Installing Homepage manifests...${NC}"
 kubectl apply -f /Users/cesarl/k8s/charts/homepage/00-namespace.yaml

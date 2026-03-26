@@ -64,4 +64,5 @@ spec:
         configMap:
           name: homepage-config
       - name: logs
-        emptyDir: {}
+        persistentVolumeClaim:
+          claimName: homepage-pvc

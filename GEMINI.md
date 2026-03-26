@@ -21,7 +21,7 @@ This file serves as a persistent memory of the architectural choices, constraint
 - **Local Path Provisioning**: Uses the `local-path` storage class.
 - **Persistent Volume Mapping**: 
   - Host path: `/Users/cesarl/k8s/vol1/<service>`
-  - Container path: Standard data directories (e.g., `/var/lib/postgresql/data/pgdata`).
+  - Container path: Standard data directories (e.g., `/var/lib/postgresql/data/pgdata`, `/app/config/logs` for Homepage).
 - **Git Hygiene**: The `.gitignore` is configured to ignore the entire `vol1/` directory and any other folder starting with `vol` to prevent local data from being committed.
 
 ### 3. Kafka Implementation (KRaft Mode)
