@@ -7,7 +7,7 @@ This file serves as a persistent memory of the architectural choices, constraint
 - **Tooling**: GitHub CLI (`gh`) and `git` for repository management.
 - **Access Pattern**: Services must be accessible from **both** the Kubernetes cluster and the local Mac/Host.
 - **Naming Convention**: Configuration files follow the pattern `00-namespace.yaml`, `deployment.yaml`, `service.yaml`, etc.
-- **Workflow Mandate**: **NEVER** commit or push changes unless explicitly directed by the user.
+- **Workflow Mandate**: **STRICTLY NEVER** commit or push changes unless explicitly directed by the user for that specific change. Do not assume "ok" or "good" applies to future commits.
 
 ## 🏗️ Architectural Decisions
 
@@ -21,7 +21,7 @@ This file serves as a persistent memory of the architectural choices, constraint
 - **Local Path Provisioning**: Uses the `local-path` storage class.
 - **Persistent Volume Mapping**: 
   - Host path: `/Users/cesarl/k8s/vol1/<service>`
-  - Container path: Standard data directories (e.g., `/var/lib/postgresql/data/pgdata`, `/app/config/logs` for Homepage).
+  - Container path: Standard data directories (e.g., `/var/lib/postgresql/data/pgdata`).
 - **Git Hygiene**: The `.gitignore` is configured to ignore the entire `vol1/` directory and any other folder starting with `vol` to prevent local data from being committed.
 
 ### 3. Kafka Implementation (KRaft Mode)
@@ -46,7 +46,6 @@ This file serves as a persistent memory of the architectural choices, constraint
   - `kafka-rest`: Stable (Verified Avro production/consumption).
   - `schema-registry`: Stable (Verified schema registration & Avro flow).
 - **IT-Tools**: Stable, ClusterIP.
-- **Homepage**: Stable, ClusterIP, with Kubernetes integration.
 - **Metrics Server**: Stable (Insecure TLS enabled for OrbStack).
 - **Git**: Repository `cesaroll/kubernetes-local` created and updated with stable Kafka suite configuration.
 
