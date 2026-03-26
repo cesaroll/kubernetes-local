@@ -1,10 +1,15 @@
+
 - Bookmarks:
   - Homepage:
       - icon: homepage
-        href: https://gethomepage.dev/
+        href: https://gethomepage.dev
   - Dashboard Icons:
       - icon: dashboard-icons
         href: https://dashboardicons.com/icons
   - Simple Icons:
       - icon: si-simpleicons
-        href: https://simpleicons.org/
+        href: https://simpleicons.org
+  - Docker Hub:
+      - icon: docker
+        href: https://hub.docker.com
+

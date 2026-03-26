@@ -1,36 +1,53 @@
-- Apps:
+- Tools:
     - IT Tools:
         icon: it-tools
         href: https://it-tools.k8s.orb.local
         description: Developer Tools
+        siteMonitor: https://it-tools.k8s.orb.local
+    - Tmux:
+        icon: si-tmux
+        href: https://tmuxcheatsheet.com/
+        description: tmux cheat sheet
 
 - Storage:
     - PostgreSQL:
         icon: postgresql
         href: postgresql.postgresql.svc.cluster.local:5432
         description: Relational Database
+        widget:
+          type: postgres
+          url: postgresql.postgresql.svc.cluster.local:5432
+          user: postgres
+          password: postgres
     - Redis:
         icon: redis
         href: redis.redis.svc.cluster.local:6379
         description: Cache
+        widget:
+          type: redis
+          url: redis.redis.svc.cluster.local:6379
 
 - Infrastructure:
     - Kafka UI:
         icon: confluent
         href: https://kafka-ui.k8s.orb.local
         description: Kafka Management
+        siteMonitor: https://kafka-ui.k8s.orb.local
     - Kafka REST:
         icon: confluent
         href: kafka-rest.kafka.svc.cluster.local:8082
         description: Kafka REST Proxy
+        siteMonitor: http://kafka-rest.kafka.svc.cluster.local:8082
     - Schema Registry:
         icon: confluent
         href: schema-registry.kafka.svc.cluster.local:8081
         description: Kafka Schema Management
+        siteMonitor: http://schema-registry.kafka.svc.cluster.local:8081
     - Kafka:
-        icon: si-apachekafka-#231F20
+        icon: si-apachekafka #-#231F20
         href: kafka.kafka.svc.cluster.local:9092
         description: Message Broker
+        # ping: kafka.kafka.svc.cluster.local:9092
 
 - Network:
   - UniFi Network:
