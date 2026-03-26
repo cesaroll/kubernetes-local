@@ -7,12 +7,12 @@ data:
   kubernetes.yaml: |
     mode: cluster
     ingress: true
-  
+
   settings.yaml: |
     title: My Local K8s Dashboard
-    base: http://homepage.k8s.orb.local
+    base: https://homepage.k8s.orb.local
     language: en
-  
+
   widgets.yaml: |
     - kubernetes:
         cluster:
@@ -21,7 +21,7 @@ data:
           memory: true
         nodes:
           show: true
-  
+
   services.yaml: |
     - Infrastructure:
         - PostgreSQL:
@@ -36,7 +36,7 @@ data:
             icon: kafka
             href: http://kafka.kafka.svc.cluster.local:9092
             description: Message Broker
-    
+
     - Apps:
         - IT Tools:
             icon: it-tools
@@ -44,5 +44,5 @@ data:
             description: Developer Tools
         - Kafka UI:
             icon: kafka
-            href: http://kafka-ui.kafka.svc.cluster.local:80
+            href: https://kafka-ui.k8s.orb.local
             description: Kafka Management
