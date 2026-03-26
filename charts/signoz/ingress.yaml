@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: signoz
+  namespace: signoz
+  annotations:
+    cert-manager.io/cluster-issuer: "selfsigned-cluster-issuer"
+    nginx.ingress.kubernetes.io/proxy-body-size: "256m"
+spec:
+  ingressClassName: nginx
+  tls:
+  - hosts:
+    - signoz.k8s.orb.local
+  rules:
+  - host: signoz.k8s.orb.local
+    http:
+      paths:
+      - path: /
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: signoz
+            port:
+              number: 8080

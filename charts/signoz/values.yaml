@@ -1,25 +1,26 @@
 global:
   storageClass: "local-path"
+  namespace: "signoz"
 
 clickhouse:
   installCustomStorageClass: false
   persistence:
     size: 10Gi
 
-frontend:
-  ingress:
-    enabled: true
-    className: nginx
-    annotations:
-      cert-manager.io/cluster-issuer: "selfsigned-cluster-issuer"
-    hosts:
-      - host: signoz.k8s.orb.local
-        paths:
-          - path: /
-            pathType: ImplementationSpecific
-    tls:
-      - hosts:
-          - signoz.k8s.orb.local
+# Ingress is under the top-level 'signoz' key in this chart version
+ingress:
+  enabled: true
+  className: nginx
+  annotations:
+    cert-manager.io/cluster-issuer: "selfsigned-cluster-issuer"
+  hosts:
+    - host: signoz.k8s.orb.local
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+  tls:
+    - hosts:
+        - signoz.k8s.orb.local
 
 # Local development optimizations
 queryService:

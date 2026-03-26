@@ -1,7 +1,10 @@
 #!/bin/bash
 
 # Uninstall SigNoz
-helm uninstall signoz -n platform
+helm uninstall signoz -n signoz
+
+# Delete manual ingress
+kubectl delete ingress signoz -n signoz
 
 # Delete namespace
-kubectl delete namespace platform
+kubectl delete namespace signoz
